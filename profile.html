@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub - Computer Shop - Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="profile-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">TechHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cart-badge" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-sidebar text-center">
+                    <img src="./images/pic.png" class="rounded-circle mb-3" alt="Profile Picture">
+                    <h3>Niraj Shevade</h3>
+                    <p class="text-muted">Computer Enthusiast <br> Owner of TechHub</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="profile-content">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Our Products</h2>
+                        <div class="search-container">
+                            <input type="text" id="productSearch" class="form-control" placeholder="Search products...">
+                        </div>
+                    </div>
+                    <div class="row" id="productContainer">
+                        <!-- Product Cards -->
+                        <div class="col-md-4 mb-4 product-item" data-product="gaming mouse rgb customizable">
+                            <div class="card product-card" data-bs-toggle="modal" data-bs-target="#mouseModal">
+                                <img src="./images/mouse.png" class="card-img-top" alt="Gaming Mouse">
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaming Mouse</h5>
+                                    <p class="card-text">High-precision gaming mouse with customizable RGB lighting.</p>
+                                    <p class="price">₹650</p>
+                                    <button class="btn btn-primary w-100" onclick="addToCart('mouse1', 'Gaming Mouse', 650, './images/mouse.png')">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4 product-item" data-product="mechanical keyboard cherry mx rgb">
+                            <div class="card product-card" data-bs-toggle="modal" data-bs-target="#keyboardModal">
+                                <img src="./images/keyboard.png" class="card-img-top" alt="Mechanical Keyboard">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mechanical Keyboard</h5>
+                                    <p class="card-text">Premium mechanical keyboard with Cherry MX switches.</p>
+                                    <p class="price">₹1200</p>
+                                    <button class="btn btn-primary w-100" onclick="addToCart('keyboard1', 'Mechanical Keyboard', 1200, './images/keyboard.png')">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4 product-item" data-product="dell xps laptop intel core i9 nvidia rtx">
+                            <div class="card product-card" data-bs-toggle="modal" data-bs-target="#dellLaptopModal">
+                                <img src="./images/dell.png" class="card-img-top" alt="Dell XPS 15">
+                                <div class="card-body">
+                                    <h5 class="card-title">Dell XPS 15</h5>
+                                    <p class="card-text">Premium business laptop with 4K OLED display.</p>
+                                    <p class="price">₹37,099.99</p>
+                                    <button class="btn btn-primary w-100" onclick="addToCart('dell1', 'Dell XPS 15', 37099.99, './images/dell.png')">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4 product-item" data-product="hp spectre x360 convertible laptop">
+                            <div class="card product-card" data-bs-toggle="modal" data-bs-target="#hpLaptopModal">
+                                <img src="./images/hp.png" class="card-img-top" alt="HP Spectre x360">
+                                <div class="card-body">
+                                    <h5 class="card-title">HP Spectre x360</h5>
+                                    <p class="card-text">Convertible laptop with stunning design.</p>
+                                    <p class="price">₹51,499</p>
+                                    <button class="btn btn-primary w-100" onclick="addToCart('hp1', 'HP Spectre x360', 51499, './images/hp.png')">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4 product-item" data-product="macbook pro m2 apple silicon">
+                            <div class="card product-card" data-bs-toggle="modal" data-bs-target="#macbookModal">
+                                <img src="./images/mac.png" class="card-img-top" alt="MacBook Pro">
+                                <div class="card-body">
+                                    <h5 class="card-title">MacBook Pro M2</h5>
+                                    <p class="card-text">Powerful laptop with Apple Silicon.</p>
+                                    <p class="price">₹1,11,999</p>
+                                    <button class="btn btn-primary w-100" onclick="addToCart('mac1', 'MacBook Pro M2', 111999, './images/mac.png')">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modals -->
+    <!-- Mouse Modal -->
+    <div class="modal fade" id="mouseModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Gaming Mouse Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="./images/mouse.png" class="img-fluid" alt="Gaming Mouse">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Features:</h4>
+                            <ul>
+                                <li>16,000 DPI optical sensor</li>
+                                <li>8 programmable buttons</li>
+                                <li>RGB lighting with 16.8M colors</li>
+                                <li>Ergonomic design</li>
+                                <li>1ms response time</li>
+                            </ul>
+                            <p class="price">Price: ₹650</p>
+                            <button class="btn btn-success" onclick="addToCart('mouse1', 'Gaming Mouse', 650, './images/mouse.png')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Modal -->
+    <div class="modal fade" id="keyboardModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mechanical Keyboard Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="./images/keyboard.png" class="img-fluid" alt="Mechanical Keyboard">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Features:</h4>
+                            <ul>
+                                <li>Cherry MX Blue switches</li>
+                                <li>Full N-key rollover</li>
+                                <li>Aluminum frame</li>
+                                <li>Detachable USB-C cable</li>
+                                <li>Customizable RGB lighting</li>
+                            </ul>
+                            <p class="price">Price: ₹1200</p>
+                            <button class="btn btn-success">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Product Modals -->
+    <!-- Dell Laptop Modal -->
+    <div class="modal fade" id="dellLaptopModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dell XPS 15 Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="./images/dell.png" class="product-modal-image" alt="Dell XPS 15">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Features:</h4>
+                            <ul>
+                                <li>15.6" 4K OLED Touch Display</li>
+                                <li>Intel Core i9-12900HK</li>
+                                <li>32GB DDR5 RAM</li>
+                                <li>1TB NVMe SSD</li>
+                                <li>NVIDIA RTX 3050 Ti</li>
+                                <li>Windows 11 Pro</li>
+                            </ul>
+                            <p class="price">Price: ₹37,099.99</p>
+                            <button class="btn btn-success" onclick="addToCart('dell1', 'Dell XPS 15', 37099.99, './images/dell.png')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HP Laptop Modal -->
+    <div class="modal fade" id="hpLaptopModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">HP Spectre x360 Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="./images/hp.png" class="product-modal-image" alt="HP Spectre x360">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Features:</h4>
+                            <ul>
+                                <li>13.5" 3K2K OLED Touch Display</li>
+                                <li>Intel Core i7-1255U</li>
+                                <li>16GB DDR4 RAM</li>
+                                <li>512GB NVMe SSD</li>
+                                <li>360° Convertible Design</li>
+                                <li>Windows 11 Home</li>
+                            </ul>
+                            <p class="price">Price: $1,499.99</p>
+                            <button class="btn btn-success" onclick="addToCart('hp1', 'HP Spectre x360', 51499, './images/hp.png')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MacBook Modal -->
+    <div class="modal fade" id="macbookModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">MacBook Pro M2 Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="./images/mac.png" class="product-modal-image" alt="MacBook Pro">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Features:</h4>
+                            <ul>
+                                <li>14" Liquid Retina XDR Display</li>
+                                <li>Apple M2 Pro Chip</li>
+                                <li>16GB Unified Memory</li>
+                                <li>512GB SSD</li>
+                                <li>Up to 18 Hours Battery Life</li>
+                                <li>macOS Ventura</li>
+                            </ul>
+                            <p class="price">Price: ₹1,11,999</p>
+                            <button class="btn btn-success" onclick="addToCart('mac1', 'MacBook Pro M2', 111999, './images/mac.png')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems"></div>
+                    <div class="cart-total">
+                        <h5>Total: <span id="cartTotal">₹0.00</span></h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button class="btn btn-primary" onclick="showCheckoutModal()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order Feedback</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="rating">
+                                <input type="radio" name="rating" value="5" id="star5" required>
+                                <label for="star5">★</label>
+                                <input type="radio" name="rating" value="4" id="star4">
+                                <label for="star4">★</label>
+                                <input type="radio" name="rating" value="3" id="star3">
+                                <label for="star3">★</label>
+                                <input type="radio" name="rating" value="2" id="star2">
+                                <label for="star2">★</label>
+                                <input type="radio" name="rating" value="1" id="star1">
+                                <label for="star1">★</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Comments</label>
+                            <textarea class="form-control" name="comments" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="cart.js"></script>
+    <script src="orders.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('productSearch');
+        const productContainer = document.getElementById('productContainer');
+        const products = document.getElementsByClassName('product-item');
+        const noResultsMessage = document.createElement('div');
+        noResultsMessage.className = 'col-12 text-center py-4';
+        noResultsMessage.innerHTML = '<h4>No products found</h4>';
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            let hasResults = false;
+
+            Array.from(products).forEach(product => {
+                const productData = product.getAttribute('data-product').toLowerCase();
+                const productTitle = product.querySelector('.card-title').textContent.toLowerCase();
+                const productDesc = product.querySelector('.card-text').textContent.toLowerCase();
+                
+                if (productData.includes(searchTerm) || 
+                    productTitle.includes(searchTerm) || 
+                    productDesc.includes(searchTerm)) {
+                    product.style.display = '';
+                    hasResults = true;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            if (!hasResults) {
+                if (!productContainer.contains(noResultsMessage)) {
+                    productContainer.appendChild(noResultsMessage);
+                }
+            } else {
+                if (productContainer.contains(noResultsMessage)) {
+                    productContainer.removeChild(noResultsMessage);
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
