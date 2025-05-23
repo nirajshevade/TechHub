@@ -45,6 +45,8 @@ body {
 }
 
 .hero-image {
+    border-radius: 15px;
+    background-color: #f1c40f;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
